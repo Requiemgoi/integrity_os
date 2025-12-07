@@ -13,7 +13,7 @@ export const useLanguage = () => {
 const translations = {
   ru: {
     // Dashboard
-    dashboard: 'Панель управления QarTech',
+    dashboard: 'Панель управления IntegrityOS',
     export: 'Экспорт',
     exportCSV: 'Экспорт CSV',
     exportPDF: 'Экспорт PDF',
@@ -60,7 +60,7 @@ const translations = {
   },
   kz: {
     // Dashboard
-    dashboard: 'QarTech Басқару панелі',
+    dashboard: 'IntegrityOS Басқару панелі',
     export: 'Экспорт',
     exportCSV: 'CSV экспорт',
     exportPDF: 'PDF экспорт',
@@ -126,7 +126,7 @@ export const LanguageProvider = ({ children }) => {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

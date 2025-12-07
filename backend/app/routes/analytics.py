@@ -302,7 +302,7 @@ def export_pdf(
     styles = getSampleStyleSheet()
     
     # Title
-    title = Paragraph("Отчет QarTech Dashboard", styles["Title"])
+    title = Paragraph("Отчет IntegrityOS Dashboard", styles["Title"])
     story.append(title)
     story.append(Spacer(1, 12))
     

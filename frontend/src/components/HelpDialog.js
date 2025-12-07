@@ -48,11 +48,11 @@ const HelpDialog = ({ open, onClose }) => {
       </DialogTitle>
       <DialogContent dividers>
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#1976d2' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#3C5BA9' }}>
             Обзор дашборда
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: '#424242', lineHeight: 1.7 }}>
-            Дашборд QarTech предоставляет комплексный мониторинг сенсоров в реальном времени, 
+            Дашборд IntegrityOS предоставляет комплексный мониторинг сенсоров в реальном времени, 
             анализ данных с использованием машинного обучения и прогнозирование трендов.
           </Typography>
         </Box>
@@ -60,7 +60,7 @@ const HelpDialog = ({ open, onClose }) => {
         <Divider sx={{ my: 2 }} />
 
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#1976d2' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#3C5BA9' }}>
             Основные компоненты
           </Typography>
           
@@ -130,7 +130,7 @@ const HelpDialog = ({ open, onClose }) => {
         <Divider sx={{ my: 2 }} />
 
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#1976d2' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#3C5BA9' }}>
             Функции управления
           </Typography>
           
@@ -170,7 +170,7 @@ const HelpDialog = ({ open, onClose }) => {
         <Divider sx={{ my: 2 }} />
 
         <Box>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#1976d2' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#3C5BA9' }}>
             Типы сенсоров
           </Typography>
           

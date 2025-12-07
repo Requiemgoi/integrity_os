@@ -11,6 +11,14 @@ import PrivateRoute from './components/PrivateRoute';
 // Ленивая загрузка страниц
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Map = lazy(() => import('./pages/Map'));
+const Objects = lazy(() => import('./pages/Objects'));
+const ObjectsDetail = lazy(() => import('./pages/ObjectsDetail'));
+const Defects = lazy(() => import('./pages/Defects'));
+const DefectDetail = lazy(() => import('./pages/DefectDetail'));
+const Reports = lazy(() => import('./pages/Reports'));
+const Import = lazy(() => import('./pages/Import'));
+const Settings = lazy(() => import('./pages/Settings'));
 
 function AppRoutes() {
   const { isAuthenticated } = useAuth();
@@ -40,6 +48,70 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/map"
+          element={
+            <PrivateRoute>
+              <Map />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/objects"
+          element={
+            <PrivateRoute>
+              <Objects />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/objects/:id"
+          element={
+            <PrivateRoute>
+              <ObjectsDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/defects"
+          element={
+            <PrivateRoute>
+              <Defects />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/defects/:id"
+          element={
+            <PrivateRoute>
+              <DefectDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reports"
+          element={
+            <PrivateRoute>
+              <Reports />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/import"
+          element={
+            <PrivateRoute>
+              <Import />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <Settings />
+            </PrivateRoute>
+          }
+        />
         <Route path="/" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Suspense>
@@ -51,7 +123,12 @@ function App() {
     <ThemeProviderWrapper>
       <LanguageProvider>
         <AuthProvider>
-          <Router>
+          <Router
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
             <AppRoutes />
           </Router>
           <ToastContainer
@@ -72,4 +149,3 @@ function App() {
 }
 
 export default App;
-

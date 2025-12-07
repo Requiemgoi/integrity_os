@@ -30,7 +30,7 @@ const AlertPanel = ({ alerts, onRefresh }) => {
       case 'medium':
         return '#fbc02d';
       case 'low':
-        return '#1976d2';
+        return '#6DC5F1';
       default:
         return '#757575';
     }

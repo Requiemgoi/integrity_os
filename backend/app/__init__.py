@@ -1,2 +1,2 @@
-# QarTech Backend Application
+# IntegrityOS Backend Application
 

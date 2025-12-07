@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # SQLite database for MVP
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./qartech.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./integrity_os.db")
 
 engine = create_engine(
     DATABASE_URL,

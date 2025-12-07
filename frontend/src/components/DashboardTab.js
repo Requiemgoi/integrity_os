@@ -314,11 +314,10 @@ const DashboardTab = ({ sensorType, summary }) => {
                   {/* Header */}
                   <Box 
                     sx={{
-                      background: 'primary.main',
+                      backgroundColor: '#3C5BA9',
                       p: 2,
-                      color: '#000',
-                      borderBottom: '2px solid',
-                      borderColor: '#1565c0'
+                      color: '#ffffff',
+                      borderBottom: '3px solid #1C1C1C',
                     }}
                   >
                     <Box display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1}>
@@ -626,7 +625,7 @@ const DashboardTab = ({ sensorType, summary }) => {
                         <Typography variant="caption" sx={{ color: '#757575', fontSize: '0.75rem', fontWeight: 500, display: 'block' }}>
                           Сенсоры
                         </Typography>
-                        <Typography variant="h5" sx={{ fontWeight: 700, mt: 0.5, color: '#1976d2', lineHeight: 1.2 }}>
+                        <Typography variant="h5" sx={{ fontWeight: 700, mt: 0.5, color: '#3C5BA9', lineHeight: 1.2 }}>
                           {summary.sensor_count || 0}
                         </Typography>
                       </Box>
@@ -643,7 +642,7 @@ const DashboardTab = ({ sensorType, summary }) => {
                           ml: 1
                         }}
                       >
-                        <ShowChart sx={{ fontSize: 24, color: '#1976d2' }} />
+                        <ShowChart sx={{ fontSize: 24, color: '#3C5BA9' }} />
                       </Box>
                     </Box>
                   </CardContent>

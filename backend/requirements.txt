@@ -8,12 +8,17 @@ sqlalchemy==2.0.23
 pandas==2.1.3
 numpy==1.26.2
 scikit-learn==1.3.2
+openpyxl==3.1.2
 python-dotenv==1.0.0
 aiofiles==23.2.1
 reportlab==4.0.7
 pydantic==2.5.0
 pydantic-settings==2.1.0
-# ML dependencies
-prophet==1.1.5
-torch==2.1.0
+# ML dependencies (optional, heavy ~2.5GB total)
+# Uncomment if you need Prophet forecasting and Autoencoder anomaly detection:
+# prophet==1.1.5
+# torch==2.1.0
+
+# Gemini / Google Generative AI (optional, used by gemini_service)
+google-generativeai==0.8.0
 

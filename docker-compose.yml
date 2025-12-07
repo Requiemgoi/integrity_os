@@ -5,11 +5,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.backend
-    container_name: qartech-backend
+    container_name: integrityos-backend
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./qartech.db
+      - DATABASE_URL=sqlite:///./integrity_os.db
       - SECRET_KEY=your-secret-key-change-in-production
     volumes:
       - ./backend:/app
@@ -25,7 +25,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.frontend
-    container_name: qartech-frontend
+    container_name: integrityos-frontend
     ports:
       - "3000:3000"
     environment:

@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Starting QarTech Backend..."
+echo "Starting IntegrityOS Backend..."
 cd backend
 python3 -m venv venv
 source venv/bin/activate

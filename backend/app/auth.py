@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 from typing import Optional
 from jose import JWTError, jwt
 import bcrypt
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import Depends, HTTPException, status, Security
+from fastapi.security import OAuth2PasswordBearer, HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from .database import get_db
 from .models import User
@@ -17,6 +17,7 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
+http_bearer = HTTPBearer(auto_error=False)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -92,3 +93,29 @@ async def get_current_user(
         raise credentials_exception
     return user
 
+
+async def get_optional_token(
+    credentials: Optional[HTTPAuthorizationCredentials] = Security(http_bearer)
+) -> Optional[str]:
+    """Extract token from Authorization header, return None if missing"""
+    if credentials:
+        return credentials.credentials
+    return None
+
+
+async def get_current_user_optional(
+    token: Optional[str] = Depends(get_optional_token),
+    db: Session = Depends(get_db)
+) -> Optional[User]:
+    """Get current authenticated user from JWT token, or None if not authenticated"""
+    if not token:
+        return None
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            return None
+        user = get_user_by_username(db, username=username)
+        return user
+    except (JWTError, Exception):
+        return None

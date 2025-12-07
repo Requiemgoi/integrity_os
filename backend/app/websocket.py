@@ -22,7 +22,7 @@ async def connect(sid, environ, auth):
     """Handle client connection"""
     print(f"Client connected: {sid}")
     print(f"Connection details: {environ.get('REMOTE_ADDR', 'unknown')}")
-    await sio.emit("message", {"data": "Connected to QarTech WebSocket"}, room=sid)
+    await sio.emit("message", {"data": "Connected to IntegrityOS WebSocket"}, room=sid)
 
 
 @sio.event

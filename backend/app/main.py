@@ -1,12 +1,29 @@
 """
 Main FastAPI application
 """
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 from fastapi.staticfiles import StaticFiles
 from .database import engine, Base
-from .routes import auth
-# from .routes import sensors, dashboard, analytics
+from .routes import (
+    auth,
+    ai,
+    defects,
+    pipelines,
+    objects,
+    import_routes,
+    reports,
+    dashboard_stats,
+    sensors,
+    dashboard,
+    analytics,
+    stats,
+)
 # from .websocket import sio, simulate_and_broadcast
 import asyncio
 from datetime import datetime
@@ -27,17 +44,32 @@ fastapi_app = FastAPI(
 # CORS middleware
 fastapi_app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify exact origins
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "*"  # Fallback for development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Include routers
 fastapi_app.include_router(auth.router)
-# fastapi_app.include_router(sensors.router)
-# fastapi_app.include_router(dashboard.router)
-# fastapi_app.include_router(analytics.router)
+fastapi_app.include_router(ai.router)
+fastapi_app.include_router(defects.router)
+fastapi_app.include_router(pipelines.router)
+fastapi_app.include_router(objects.router)
+fastapi_app.include_router(import_routes.router)
+fastapi_app.include_router(reports.router)
+fastapi_app.include_router(dashboard_stats.router)
+fastapi_app.include_router(sensors.router)
+fastapi_app.include_router(dashboard.router)
+fastapi_app.include_router(analytics.router)
+fastapi_app.include_router(stats.router)
 
 # Socket.IO disabled
 app = fastapi_app

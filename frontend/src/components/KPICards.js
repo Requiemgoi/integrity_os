@@ -50,15 +50,15 @@ const KPICards = ({ kpis }) => {
       <Grid item xs={12} sm={6} md={3} key={kpi.id || kpi.kpi_name}>
         <Card
           sx={{
-            borderRadius: 2,
-            boxShadow: 2,
-            border: '1px solid',
-            borderColor: 'divider',
+            borderRadius: 1,
+            border: '3px solid #1C1C1C',
+            boxShadow: '4px 4px 0 rgba(0, 0, 0, 0.35)',
+            backgroundColor: 'background.paper',
             height: '100%',
-            transition: 'transform 0.2s, box-shadow 0.2s',
+            transition: 'transform 0.1s ease-out, box-shadow 0.1s ease-out',
             '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: 4
+              transform: 'translate(-2px, -2px)',
+              boxShadow: '6px 6px 0 rgba(0, 0, 0, 0.45)'
             }
           }}
         >

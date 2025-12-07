@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Container,
-  Paper,
-  TextField,
-  Button,
-  Typography,
-  Box,
-  Alert,
-} from '@mui/material';
+import { Container, TextField, Typography, Box, Alert } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
+import PixelWindow from '../components/PixelWindow';
+import PixelButton from '../components/PixelButton';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -43,66 +37,82 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <Box
         sx={{
-          marginTop: 8,
+          minHeight: '100vh',
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          py: 4,
         }}
       >
-        <Paper elevation={3} sx={{ padding: 4, width: '100%' }}>
-          <Typography component="h1" variant="h4" align="center" gutterBottom>
-            QarTech
-          </Typography>
-          <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
-            Платформа Индустрии 4.0
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            {error && (
-              <Alert severity="error" sx={{ mb: 2 }}>
-                {error}
-              </Alert>
-            )}
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Имя пользователя"
-              name="username"
-              autoComplete="username"
-              autoFocus
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Пароль"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disabled={loading}
+        <Box sx={{ width: '100%', maxWidth: 480 }}>
+          <PixelWindow title="IntegrityOS LOGIN">
+            <Typography
+              component="h1"
+              variant="h4"
+              align="center"
+              gutterBottom
+              sx={{
+                fontWeight: 800,
+                letterSpacing: '0.06em',
+                fontSize: 24,
+              }}
             >
-              {loading ? 'Вход...' : 'Войти'}
-            </Button>
-            <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
-              По умолчанию: admin / admin123
+              IntegrityOS
             </Typography>
-          </Box>
-        </Paper>
+            <Typography
+              variant="subtitle2"
+              align="center"
+              sx={{ mb: 2, opacity: 0.9 }}
+            >
+              Платформа мониторинга трубопроводов
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+              {error && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                  {error}
+                </Alert>
+              )}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Имя пользователя"
+                name="username"
+                autoComplete="username"
+                autoFocus
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Пароль"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <PixelButton
+                type="submit"
+                fullWidth
+                sx={{ mt: 3, mb: 2, justifyContent: 'center' }}
+                disabled={loading}
+              >
+                {loading ? 'Вход...' : 'Войти'}
+              </PixelButton>
+              <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 1 }}>
+                По умолчанию: admin / admin123
+              </Typography>
+            </Box>
+          </PixelWindow>
+        </Box>
       </Box>
     </Container>
   );
